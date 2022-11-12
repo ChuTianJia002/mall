@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/AIOT.iml" filepath="$PROJECT_DIR$/AIOT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Face-IPC-FSH/Face-IPC-FSH.iml" filepath="$PROJECT_DIR$/Face-IPC-FSH/Face-IPC-FSH.iml" />
+    </modules>
+  </component>
+</project>
