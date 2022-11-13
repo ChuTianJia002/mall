@@ -8,15 +8,15 @@
         <groupId>com.neutron.edge</groupId>
         <artifactId>aiot</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath/> <!-- lookup parent from repository -->
+<!--        <relativePath/> -->
     </parent>
 
-
+    <!--  项目描述  -->
     <groupId>com.neutron.edge</groupId>
     <artifactId>face-ipc-fsh</artifactId>
     <version>1.0-SNAPSHOT</version>
 
-    <!--  项目描述  -->
+
     <packaging>jar</packaging>
     <name>face-ipc-fsh</name>
     <description>Face-IPC-FSH project for Spring Boot</description>
