@@ -1,0 +1,27 @@
+project:
+  name: Face-IPC-FSH
+  version: 1.0
+  organization: TianJIa Stuidio
+  members:
+    manager: ChuTianJia
+    Developer: liuJiaJia
+
+server:
+  port: 8689
+
+
+knife4j:
+  enable: true
+
+
+
+
+
+
+
+#==============自定义参数==========#
+
+# 设备（识别）抓拍图上传地址
+clockFaceDataPath: D:/DevelopeTools/Server/Tomcat/apache-tomcat-8/webapps/oss/
+# data 平台地址
+dataIp: 192.168.31.29:8082
