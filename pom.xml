@@ -27,7 +27,15 @@
 
     <!-- 版本统一管理   -->
     <properties>
+        <!--======================统一编码格式=================================-->
+        <!-- 编译时的编码 -->
+        <maven.compiler.encoding>UTF-8</maven.compiler.encoding>
+        <!-- 文件拷贝时的编码 -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <!--======================================================================-->
         <java.version>1.8</java.version>
+        
         <junit.version>4.12</junit.version>
         <knife4j.version>2.0.9</knife4j.version>
     </properties>
@@ -42,6 +50,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <scope>runtime</scope>
+            <optional>true</optional>
+        </dependency>
+        <!-- @ConfigurationProperties注释
+            给自定义的配置类生成元数据信息-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional>
         </dependency>
         <dependency>
@@ -64,14 +79,6 @@
             <artifactId>knife4j-spring-boot-starter</artifactId>
             <version>${knife4j.version}</version>
         </dependency>
-
-        <!-- @ConfigurationProperties注释
-            给自定义的配置类生成元数据信息-->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--            <optional>true</optional>-->
-<!--        </dependency>-->
 
         <!--lombok : @Data 、@Slf4j+logback       -->
         <dependency>
