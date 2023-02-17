@@ -3,7 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AIOT.iml" filepath="$PROJECT_DIR$/AIOT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Face-IPC-Data/Face-IPC-Data.iml" filepath="$PROJECT_DIR$/Face-IPC-Data/Face-IPC-Data.iml" />
       <module fileurl="file://$PROJECT_DIR$/Face-IPC-FSH/Face-IPC-FSH.iml" filepath="$PROJECT_DIR$/Face-IPC-FSH/Face-IPC-FSH.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Face-IPC-Data/data-web/data-web.iml" filepath="$PROJECT_DIR$/Face-IPC-Data/data-web/data-web.iml" />
     </modules>
   </component>
 </project>

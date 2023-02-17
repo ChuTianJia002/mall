@@ -1,0 +1,63 @@
+{
+  "properties": [
+    {
+      "name": "project.name",
+      "type": "java.lang.String",
+      "description": "Description for project.name."
+    },
+    {
+      "name": "project.version",
+      "type": "java.lang.String",
+      "description": "Description for project.version."
+    },
+    {
+      "name": "project.organization.name",
+      "type": "java.lang.String",
+      "description": "Description for project.organization.name."
+    },
+    {
+      "name": "project.organization.roles",
+      "type": "java.lang.String",
+      "description": "Description for project.organization.roles."
+    },
+    {
+      "name": "project.organization.members.manager",
+      "type": "java.lang.String",
+      "description": "Description for project.organization.members.manager."
+    },
+    {
+      "name": "project.organization.members.developer",
+      "type": "java.lang.String",
+      "description": "Description for project.organization.members.developer."
+    },
+    {
+      "name": "project.organization.members.testor",
+      "type": "java.lang.String",
+      "description": "Description for project.organization.members.testor."
+    },
+    {
+      "name": "redisExpireTime.command",
+      "type": "java.lang.String",
+      "description": "Description for redisExpireTime.command."
+    },
+    {
+      "name": "redisExpireTime.result",
+      "type": "java.lang.String",
+      "description": "Description for redisExpireTime.result."
+    },
+    {
+      "name": "timeUnit.hour",
+      "type": "java.lang.String",
+      "description": "Description for timeUnit.hour."
+    },
+    {
+      "name": "timeUnit.minute",
+      "type": "java.lang.String",
+      "description": "Description for timeUnit.minute."
+    },
+    {
+      "name": "timeUnit.second",
+      "type": "java.lang.String",
+      "description": "Description for timeUnit.second."
+    }
+  ] }

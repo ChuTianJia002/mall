@@ -8,17 +8,22 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="Face-IPC-FSH" />
+        <module name="data-web" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="AIOT" target="1.8" />
+      <module name="data-web" target="1.8" />
+      <module name="Face-IPC-Data" target="1.8" />
       <module name="Face-IPC-FSH" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="AIOT" options="-parameters" />
-      <module name="Face-IPC-FSH" options="-parameters" />
+      <module name="Face-IPC-Data" options="-parameters" />
+      <module name="Face-IPC-FSH" options="" />
+      <module name="data-web" options="-parameters" />
     </option>
   </component>
 </project>

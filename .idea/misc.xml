@@ -5,6 +5,8 @@
       <list>
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/Face-IPC-FSH/pom.xml" />
+        <option value="$PROJECT_DIR$/Face-IPC-Data/pom.xml" />
+        <option value="$PROJECT_DIR$/Face-IPC-Data/data-web/pom.xml" />
       </list>
     </option>
   </component>

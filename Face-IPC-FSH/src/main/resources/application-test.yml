@@ -1,0 +1,62 @@
+# LocalHost Test
+
+project:
+  name: Face-IPC-FSH
+  version: 1.0
+  organization:
+    name: TianJIa Stuidio
+    roles:   # 数组
+      - manager
+      - developer
+      - testor
+    members:
+        manager: ChuTianJia
+        developer: liuJiaJia
+        testor: chuTianYou
+
+server:
+  port: 8689
+
+# 控制台日志打印
+logging:
+  group:
+    fsh: com.neutron.edge
+  pattern:
+    console:  '%d{HH:mm:ss.SSS} %-5level [%thread] %logger{15} - %msg%n'
+
+
+# 接口文档
+knife4j:
+  enable: true
+
+
+
+spring:
+  # ====Redis 配置
+  redis:
+    host: 127.0.0.1
+    password: Asian@123
+    port: 6379
+  
+  
+
+
+
+#==============自定义参数==========#
+# Redis 缓存过期时间
+redisExpireTime:
+  command: 8
+  result: 8
+timeUnit:
+  hour: h
+  minute: m
+  second: s
+  
+  
+
+
+# 设备（识别）抓拍图上传地址
+clockFaceDataPath: D:/Dev/Server/Tomcat/apache-tomcat-8/apache-tomcat-1/webapps/oss/
+# data 平台地址
+dataIp: 192.168.31.29:8082
+
