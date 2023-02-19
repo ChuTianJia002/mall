@@ -31,19 +31,40 @@ public class RedisConfig {
     
     //******************************Redis 缓存过期时间************************//
     /**
-     * 时间单位
+     * 时间单位: 时分秒
      */
-    public static String timeUnit_Hour;
-    public static String timeUnit_Minute;
-    public static String timeUnit_Second;
+    public static String timeUnitHour;
+    public static String timeUnitMinute;
+    public static String timeUnitSecond;
+    
     /**
-     * 操作指令过期时间
+     * 心跳信息有效期
      */
-    public static Integer ExpireTime_Command;
+    public static Integer expireTimeHeartTime;
     /**
-     * 执行返回结果过期时间
+     * 操作指令存活时间
      */
-    public static Integer ExpireTime_Result;
+    public static Integer expireTimeCommandAliveTime;
+    
+    /**
+     * 操作指令通知过期时间(通知设备)
+     */
+    public static Integer expireTimeCommandInformTime;
+    
+    /**
+     * 更新操作指令通知过期时间
+     */
+    public static Integer expireTimeCommand;
+    /**
+     * 执行指令返回结果过期时间
+     */
+    public static Integer expireTimeCommandReturn;
+    /**
+     * 等待返回结果过期时间
+     * 命令执行超时时间
+     */
+    public static Integer expireTimeWaitCommandReturnTime;
+    
     
     
     //=======================================================================//
@@ -64,28 +85,49 @@ public class RedisConfig {
         RedisConfig.redisPassword = redisPassword;
     }
     
+    
     @Value("${timeUnit.hour}")
-    public void setTimeUnit_h(String timeUnit_Hour) {
-        RedisConfig.timeUnit_Hour = timeUnit_Hour;
+    public void setTimeUnitHour(String timeUnitHour) {
+        RedisConfig.timeUnitHour = timeUnitHour;
     }
     
     @Value("${timeUnit.minute}")
-    public void setTimeUnit_m(String timeUnit_Minute) {
-        RedisConfig.timeUnit_Minute = timeUnit_Minute;
+    public void setTimeUnitMinute(String timeUnitMinute) {
+        RedisConfig.timeUnitMinute = timeUnitMinute;
     }
     
     @Value("${timeUnit.second}")
-    public void setTimeUnit_s(String timeUnit_Second) {
-        RedisConfig.timeUnit_Second = timeUnit_Second;
+    public void setTimeUnitSecond(String timeUnitSecond) {
+        RedisConfig.timeUnitSecond = timeUnitSecond;
     }
-
-    @Value("${redisExpireTime.command}")
+    
+    @Value("${redisExpireTime.heartTime}")
+    public void setExpireTimeHeartTime(Integer expireTimeHeartTime) {
+        RedisConfig.expireTimeHeartTime = expireTimeHeartTime;
+    }
+    
+    @Value("${redisExpireTime.commandAliveTime}")
+    public void setExpireTimeCommandAliveTime(Integer expireTimeCommandAliveTime) {
+        RedisConfig.expireTimeCommandAliveTime = expireTimeCommandAliveTime;
+    }
+    
+    @Value("${redisExpireTime.commandInformTime}")
+    public void setExpireTimeCommandInformTime(Integer expireTimeCommandInformTime) {
+        RedisConfig.expireTimeCommandInformTime = expireTimeCommandInformTime;
+    }
+    
+    @Value("${redisExpireTime.commandTime}")
     public void setExpireTimeCommand(Integer expireTimeCommand) {
-        ExpireTime_Command = expireTimeCommand;
+        RedisConfig.expireTimeCommand = expireTimeCommand;
     }
-
-    @Value("${redisExpireTime.result}")
-    public void setExpireTimeResult(Integer expireTimeResult) {
-        ExpireTime_Result = expireTimeResult;
+    
+    @Value("${redisExpireTime.commandReturnTime}")
+    public void setExpireTimeCommandReturn(Integer expireTimeCommandReturn) {
+        RedisConfig.expireTimeCommandReturn = expireTimeCommandReturn;
+    }
+    
+    @Value("${redisExpireTime.waitCommandReturnTime}")
+    public void setExpireTimeWaitCommandReturnTime(Integer expireTimeWaitCommandReturnTime) {
+        RedisConfig.expireTimeWaitCommandReturnTime = expireTimeWaitCommandReturnTime;
     }
 }

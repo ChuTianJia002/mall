@@ -14,18 +14,22 @@ import redis.clients.jedis.Jedis;
  * @date 2022/11/6 14:48
  */
 public class ResultAsJsonUtil {
-
-
-    public static void getResultJsonObject(JSONObject jsonObject, Jedis jedis, String serialNum) {
+    
+    
+    /**
+     * 创建新的心跳信息（空指令）
+     * @param jedis redis 对象
+     * @param serialNum 设备序列号
+     */
+    public static void getResultJsonObject( Jedis jedis, String serialNum) {
         //不存在 重新放入一个操作指令执行结果返回信息
+        JSONObject jsonObject = new JSONObject();
         jsonObject.put("ReturnCode",0);
         jsonObject.put("ReturnStr","OK");
         jsonObject.put("PushEventInfo",true);
         jsonObject.put("PushEventPic",true);
         String s = jsonObject.toJSONString();
-        // CommandResult commandResult = new CommandResult();
-        // String s = new JSONObject(commandResult).toJSONString();
-        jedis.setex(DeviceDefined.HEART_BEAT + serialNum, RedisConfig.ExpireTime_Result,s);
+        jedis.setex(DeviceDefined.HEART_BEAT + serialNum, RedisConfig.expireTimeHeartTime,s);
         
     }
 }

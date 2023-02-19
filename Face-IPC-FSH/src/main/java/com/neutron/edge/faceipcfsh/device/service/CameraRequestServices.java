@@ -55,6 +55,37 @@ public class CameraRequestServices {
         
     }
     
- 
+    /**
+     * 判断操作指令返回类型
+     * @return 正确类型true 错误false
+     */
+    public boolean judgeCommandReturn(JSONObject valueStrJsonObj){
+        //执行结束 携带有返回信息Result _ Stop
+        String stop = "Stop"; String result = "Result";
+        if(valueStrJsonObj.containsKey(stop) &&
+                valueStrJsonObj.getInteger(stop) == 1){
+            log.info("=================have Stop");
+            log.info("*****************************************");
+            log.info("*****************************************");
+            log.info("=================请求信息{}",valueStrJsonObj);
+            log.info("*****************************************");
+            log.info("*****************************************");
+            log.info("=================have Stop");
+            return true;
+        }
+        if(valueStrJsonObj.containsKey(result) &&
+                !valueStrJsonObj.containsKey(stop)){
+            // 请求信息中包含 Result && 不包含 stop
+            log.info("=================have Result");
+            log.info("*****************************************");
+            log.info("*****************************************");
+            log.info("=================请求信息{}",valueStrJsonObj);
+            log.info("*****************************************");
+            log.info("*****************************************");
+            log.info("=================have Result");
+            return true;
+        }
+        return false;
+    }
     
 }

@@ -36,15 +36,20 @@ public class RedisTest {
     
     @Test
     public void getRedisTimeUnit(){
-        System.out.println("Hour: " + RedisConfig.timeUnit_Hour);
-        System.out.println("Minute: " + RedisConfig.timeUnit_Minute);
-        System.out.println("Second: " + RedisConfig.timeUnit_Second);
+        System.out.println("Hour: " + RedisConfig.timeUnitHour);
+        System.out.println("Minute: " + RedisConfig.timeUnitMinute);
+        System.out.println("Second: " + RedisConfig.timeUnitSecond);
     }
     
     @Test
     public void getRedisExpireTime(){
-        System.out.println("command: " + RedisConfig.ExpireTime_Command);
-        System.out.println("result: " + RedisConfig.ExpireTime_Result);
+        System.out.println("expireTimeHeartTime: " + RedisConfig.expireTimeHeartTime);
+        System.out.println("expireTimeCommandAliveTime: " + RedisConfig.expireTimeCommandAliveTime);
+        System.out.println("expireTimeCommandInformTime: " + RedisConfig.expireTimeCommandInformTime);
+        System.out.println("expireTimeCommand: " + RedisConfig.expireTimeCommand);
+        System.out.println("expireTimeCommandReturn: " + RedisConfig.expireTimeCommandReturn);
+        System.out.println("expireTimeWaitCommandReturnTime: " + RedisConfig.expireTimeWaitCommandReturnTime);
+        
     }
     
 }

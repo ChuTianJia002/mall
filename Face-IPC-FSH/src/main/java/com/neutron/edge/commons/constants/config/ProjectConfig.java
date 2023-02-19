@@ -1,10 +1,9 @@
 package com.neutron.edge.commons.constants.config;
 
+import com.neutron.edge.commons.constants.config.entity.Organization;
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 /**
  * @version 1.0

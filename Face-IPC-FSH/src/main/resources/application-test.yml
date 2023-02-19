@@ -35,28 +35,38 @@ spring:
   # ====Redis 配置
   redis:
     host: 127.0.0.1
-    password: Asian@123
     port: 6379
+    password: Asian@123
+    
   
   
 
 
 
 #==============自定义参数==========#
-# Redis 缓存过期时间
-redisExpireTime:
-  command: 8
-  result: 8
+# 时间单位
 timeUnit:
   hour: h
   minute: m
   second: s
+# Redis 缓存过期时间
+redisExpireTime:
+  heartTime: 8
+  commandAliveTime: 10
+  commandInformTime: 15
+  commandTime: 8
+  commandReturnTime: 10
+  waitCommandReturnTime: 10000
+  
+  
+  
+
   
   
 
 
-# 设备（识别）抓拍图上传地址
-clockFaceDataPath: D:/Dev/Server/Tomcat/apache-tomcat-8/apache-tomcat-1/webapps/oss/
-# data 平台地址
-dataIp: 192.168.31.29:8082
+## 设备（识别）抓拍图上传地址
+#clockFaceDataPath: D:/Dev/Server/Tomcat/apache-tomcat-8/apache-tomcat-1/webapps/oss/
+## data 平台地址
+#dataIp: 192.168.31.29:8082
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.Arrays;
+
 /**
  * @version 1.0
  * @author Liu JiaJia
@@ -16,13 +18,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ProjectConfigTest {
-    // 装配Employee
+    // 装配projectConfig
     @Autowired
     private ProjectConfig projectConfig;
     
     @Test
     public void getProjectConfig(){
-        System.out.println(projectConfig);
+        System.out.println(projectConfig.getName());
+        System.out.println(projectConfig.getVersion());
+        System.out.println(projectConfig.getOrganization().getName());
+        System.out.println(Arrays.toString(projectConfig.getOrganization().getRoles()));
+        System.out.println(projectConfig.getOrganization().getMembers());
+        
     }
 
 

@@ -1,4 +1,4 @@
-package com.neutron.edge.commons.constants.config;
+package com.neutron.edge.commons.constants.config.entity;
 
 import lombok.Data;
 

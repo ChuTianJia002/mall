@@ -1,9 +1,11 @@
 package com.neutron.edge.utils.device;
 
 
+import com.neutron.edge.commons.constants.config.RedisConfig;
 import com.neutron.edge.commons.constants.defined.DeviceDefined;
 import com.neutron.edge.commons.exception.BizException;
 // import com.neutron.edge.faceipcfsh.device.entity.CameraCommandMap;
+import com.neutron.edge.utils.device.mapconfig.CameraCommandMap;
 import com.neutron.edge.utils.jedis.JedisPoolUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
@@ -31,9 +33,8 @@ public class CameraUtil {
      * @date 2022/11/6 12:12
      */
     public static void commandStart(String cameraId) {
-        Jedis jedis = JedisPoolUtils.getJedis();
-        try {
-            // jedis = JedisPoolUtils.getJedis()
+        
+        try (Jedis jedis = JedisPoolUtils.getJedis()){
             JSONObject jsonObject = new JSONObject();
             jsonObject.put("ReturnCode", 0);
             jsonObject.put("ReturnStr", "OK");
@@ -41,13 +42,14 @@ public class CameraUtil {
             jsonObject.put("PushEventPic", true);
             jsonObject.put("StartCommand", true);
             String s = jsonObject.toString();
-            jedis.setex(DeviceDefined.HEART_BEAT + cameraId, 15, s);
+            
+            jedis.setex(DeviceDefined.HEART_BEAT + cameraId, RedisConfig.expireTimeCommandInformTime, s);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        finally {
-            jedis.close();
-        }
+        // finally {
+        //     jedis.close();
+        // }
 
     }
 
@@ -84,29 +86,29 @@ public class CameraUtil {
         return stringBuilder.toString();
     }
 
-    // /**
-    //  * 处理操作命令
-    //  * @param cameraId
-    //  * @param command
-    //  * @param workingException
-    //  * @author: Liu JiaJia
-    //  * @date: 2022/11/6 16:15
-    //  */
-    // public static void dealCommand(String cameraId, String command, String workingException) {
-    //     // 判断命令集合中该设备是否已经存在此命令
-    //     if (CameraCommandMap.commandMap.containsKey(command + cameraId)) {
-    //         throw new BizException(workingException);
-    //     }
-    //     // 不存在则把命令放入 命令集合中
-    //     CameraCommandMap.commandMap.put(command + cameraId, 0);
-    //     // 更新一下心跳
-    //     commandStart(cameraId);
-    // }
+    /**
+     * 处理操作命令
+     * @param cameraId 设备序列号
+     * @param command 操作指令名前缀
+     * @param workingException 指令进行中前缀
+     * @author Liu JiaJia
+     * @date 2022/11/6 16:15
+     */
+    public static void dealCommand(String cameraId, String command, String workingException) {
+        // 判断命令集合中该设备是否已经存在此命令
+        if (CameraCommandMap.commandMap.containsKey(command + cameraId)) {
+            throw new BizException(workingException);
+        }
+        // 不存在则把命令放入 命令集合中
+        CameraCommandMap.commandMap.put(command + cameraId, 0);
+        // 更新一下心跳信息-通知设备有操作指令下发
+        commandStart(cameraId);
+    }
 
     /**
      * 获取命令操作结果
      * @param cameraId 设备序列号
-     * @param commandFlag 命令标志前缀
+     * @param commandFlag 操作指令标志前缀
      * @return java.lang.String
      * @author Liu JiaJia
      * @date 2022/11/7 16:01
@@ -116,8 +118,8 @@ public class CameraUtil {
         // Jedis jedis = null;
         //一直监听redis中 是否存在该设备此指令执行结果
         while (true) {
-            Jedis jedis = JedisPoolUtils.getJedis();
-            try{
+            
+            try(Jedis jedis = JedisPoolUtils.getJedis()){
                 // jedis = JedisPoolUtils.getJedis()
                 String returnKey = "response_" + commandFlag + cameraId;
                 Boolean exists = jedis.exists(returnKey);
@@ -134,14 +136,15 @@ public class CameraUtil {
             //     jedis.close();
             // }
             
-            //超过10秒 抛出超时异常
+            //等待非重启操作指令返回结果超过10秒 抛出超时异常
             long end = System.currentTimeMillis();
-            if (end - start > 10000) {
+            if ((end - start > RedisConfig.expireTimeWaitCommandReturnTime)
+                    && (!commandFlag.equals(DeviceDefined.OPT_frmDeviceReboot))) {
                 throw new BizException("查询超时，请稍后再试");
             }
         }
     }
 
-
+    
 
 }
